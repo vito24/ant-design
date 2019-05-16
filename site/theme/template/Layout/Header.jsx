@@ -91,6 +91,8 @@ export default class Header extends React.Component {
     } = this.props;
     const currentProtocol = `${window.location.protocol}//`;
     const currentHref = window.location.href.substr(currentProtocol.length);
+    const localizedPathname = utils.getLocalizedPathname(pathname, !utils.isZhCN(pathname));
+    const isDev = process.env.NODE_ENV === 'development';
 
     if (utils.isLocalStorageNameSupported()) {
       localStorage.setItem('locale', utils.isZhCN(pathname) ? 'en-US' : 'zh-CN');
@@ -100,7 +102,7 @@ export default class Header extends React.Component {
       currentProtocol +
       currentHref.replace(
         window.location.pathname,
-        utils.getLocalizedPathname(pathname, !utils.isZhCN(pathname)),
+        isDev ? localizedPathname : `/ant-design${localizedPathname}`,
       );
   };
 
