@@ -33,6 +33,7 @@ module.exports = {
   },
   theme: './site/theme',
   htmlTemplate: './site/theme/static/template.html',
+  root: '/ant-design/',
   themeConfig: {
     categoryOrder: {
       'Ant Design': 0,
